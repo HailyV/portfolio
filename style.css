@@ -1,0 +1,7 @@
+body {
+  /* 
+     Set the font size to 100% of the default font size (typically 16px) 
+     and line height to 1.5 times the font size.
+  */
+  font: 100%/1.5 system-ui;
+}
