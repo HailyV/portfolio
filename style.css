@@ -1,7 +1,109 @@
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-top: 0.5em;
+
+  h1 {
+      font-size: 300%;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+  }
+
+  h2 {
+      font-size: 100%;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+  }
+}
+
 body {
-  /* 
-     Set the font size to 100% of the default font size (typically 16px) 
-     and line height to 1.5 times the font size.
-  */
+  max-width: 100ch;
   font: 100%/1.5 system-ui;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+}
+
+/* Navigation Style */
+nav {
+  display: flex;
+  margin-bottom: 0.5em;
+  border-bottom-width: 1.0px;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(80% 3% 200);
+}
+nav a {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: calc(0.5em - 0.4em);
+  font-weight: bold;
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+:root {
+  --color-accent: oklch(92.69% 0.0661 190.75);
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
+/* Contact Form Styles */
+
+.contact-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+.contact-form label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  grid-column: 1;
+  text-align: left;
+  align-self: center;
+}
+.contact-form button {
+  grid-column: 1 / -1;
+  justify-self: center;
+  cursor: pointer;
+  padding: 0.5em;
+  justify-self: stretch;
+}
+
+/* Project Form Styles */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+.projects h2 {
+  margin: 0;
+}
+
+/* Resume Style */
+.section h1,h3{
+  text-align: center;
 }

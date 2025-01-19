@@ -8,20 +8,24 @@
     <nav>
         <a href="../index.html">Home</a>
         <a href="../projects/index.html">Projects</a>
-        <a href="../contact/index.html">Contact</a>
+        <a href="../contact/index.html" class="current">Contact</a>
         <a href="https://github.com/HailyV" target="_blank">Profile</a>
         <a href="../cv/index.html">Resume</a>
     </nav>
 </head>
 <body>
-    <h1>Contact</h1>
-    <form action="mailto:havuong@ucsd.com" method="POST" enctype="text/plain">
-        <label>Email:</label>
-        <input name="email" type="email">
-        <label>Subject:</label>
-        <input name="subject">
-        <label>Body:</label>
-        <textarea name='body'></textarea>
-        <button>Submit</button>
+    <h1>Contact me</h1>
+    <form action="mailto:havuong@ucsd.com" method="POST" enctype="text/plain" class="contact-form">
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email">
+    
+        <label for="subject">Subject:</label>
+        <input id="subject" name="subject" type="text">
+    
+        <label for="body">Message:</label>
+        <textarea id="body" name="body"></textarea>
+    
+        <button type="submit">Send</button>
+    </form>    
 </body>
 </html>
