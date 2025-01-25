@@ -4,21 +4,12 @@
     <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../global.js" type="module" defer></script>
     <title>Contact</title>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../projects/index.html">Projects</a>
-        <a href="../contact/index.html" class="current">Contact</a>
-        <a href="https://github.com/HailyV" target="_blank">Profile</a>
-        <a href="../cv/index.html">Resume</a>
-    </nav>
 </head>
 <body>
     <h1>Contact me</h1>
-    <form action="mailto:havuong@ucsd.com" method="POST" enctype="text/plain" class="contact-form">
-        <label for="email">Email:</label>
-        <input id="email" name="email" type="email">
-    
+    <form action="mailto:havuong@ucsd.com" method="GET" class="contact-form">
         <label for="subject">Subject:</label>
         <input id="subject" name="subject" type="text">
     

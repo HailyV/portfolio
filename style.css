@@ -28,13 +28,34 @@ body {
 }
 
 /* Navigation Style */
+
+:root {
+  --color-accent: oklch(92.69% 0.0661 190.75);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   margin-bottom: 0.5em;
   border-bottom-width: 1.0px;
   border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  border-bottom-color: var(--border-color);
 }
+
 nav a {
   flex: 1;
   text-decoration: none;
@@ -44,23 +65,16 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: calc(0.5em - 0.4em);
   font-weight: bold;
 }
 
-nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
-}
-
-:root {
-  --color-accent: oklch(92.69% 0.0661 190.75);
-}
-
+/* Move theme-specific hover styles here for priority */
 html {
   accent-color: var(--color-accent);
 }
+
 
 /* Contact Form Styles */
 
