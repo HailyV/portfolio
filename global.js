@@ -28,11 +28,12 @@ document.body.insertAdjacentHTML(
 );
 
 // Function to initialize the theme on page load
+
+// Function to initialize the theme on page load
 function initializeTheme() {
   const savedTheme = localStorage.getItem('theme') || 'auto';
   setTheme(savedTheme);
   document.getElementById('theme-switcher').value = savedTheme;
-  
 }
 
 // Function to apply the selected theme
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const select = document.querySelector('#theme-switcher');
   select.addEventListener('input', function (event) {
-    console.log('color scheme changed to', event.target.value);
+    console.log('Color scheme changed to', event.target.value);
     setTheme(event.target.value); // Apply the selected theme
   });
 
@@ -64,41 +65,45 @@ document.addEventListener('DOMContentLoaded', () => {
   switcher.style.right = '1rem';
   switcher.style.fontSize = '80%';
   switcher.style.fontFamily = 'inherit';
-});
 
+  // Navigation setup
+  const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
-
-let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/index.html', title: 'Projects' },
-    { url: 'cv/index.html', title: 'Resume' },
-    { url: 'contact/index.html', title: 'Contact' },
+  let pages = [
+    { url: '/', title: 'Home' },
+    { url: '/projects/index.html', title: 'Projects' },
+    { url: '/cv/index.html', title: 'Resume' },
+    { url: '/contact/index.html', title: 'Contact' },
     { url: 'https://github.com/HailyV', title: 'Profile' },
   ];
 
-let nav = document.createElement('nav');
-document.body.prepend(nav);
+  let nav = document.createElement('nav');
+  document.body.prepend(nav);
 
-for (let p of pages) {
+  for (let p of pages) {
     let url = p.url;
     let title = p.title;
-
-    url = (!ARE_WE_HOME && !url.startsWith('http')) ? '../' + url : url;
 
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
 
+    // Mark the current page
     if (a.host === location.host && a.pathname === location.pathname) {
-        a.classList.add('current');
+      a.classList.add('current');
     }
 
+    // Open external links in a new tab
     if (a.host !== location.host) {
-        a.target = "_blank";
+      a.target = '_blank';
     }
+
     nav.append(a);
-}
+  }
+
+  document.head.append(style);
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
