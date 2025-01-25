@@ -27,7 +27,20 @@ document.body.insertAdjacentHTML(
 `
 );
 
-// Function to initialize the theme on page load
+
+document.body.insertAdjacentHTML(
+  'afterbegin',
+  `
+  <label class="color-scheme">
+    Theme:
+    <select id="theme-switcher">
+      <option value="auto" selected>Automatic</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </label>
+`
+);
 
 // Function to initialize the theme on page load
 function initializeTheme() {
@@ -68,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Navigation setup
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
-
+  // change for live server
   let pages = [
-    { url: '/', title: 'Home' },
-    { url: '/projects/index.html', title: 'Projects' },
-    { url: '/cv/index.html', title: 'Resume' },
-    { url: '/contact/index.html', title: 'Contact' },
+    { url: '/portfolio/', title: 'Home' },
+    { url: '/portfolio/projects/index.html', title: 'Projects' },
+    { url: '/portfolio/cv/index.html', title: 'Resume' },
+    { url: '/portfolio/contact/index.html', title: 'Contact' },
     { url: 'https://github.com/HailyV', title: 'Profile' },
   ];
 
@@ -100,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nav.append(a);
   }
-
   document.head.append(style);
 });
 
