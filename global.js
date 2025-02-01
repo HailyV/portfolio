@@ -123,3 +123,78 @@ document.addEventListener('DOMContentLoaded', () => {
     location.href = url;
   });
 });
+
+export async function fetchJSON(url) {
+  try {
+      // Fetch the JSON file from the given URL
+      const response = await fetch(url);
+
+      // Check if the response was successful
+      if (!response.ok) {
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      }
+
+      // Parse the JSON response
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  // Ensure the container exists
+  if (!containerElement) {
+      console.error("Error: containerElement is not defined.");
+      return;
+  }
+
+  // Clear the container to avoid duplication
+  containerElement.innerHTML = '';
+
+  // Validate heading level (must be h1-h6)
+  const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+  const headingTag = validHeadings.includes(headingLevel) ? headingLevel : 'h2';
+
+  // Create an article for the project
+  const article = document.createElement('article');
+
+  // Create a project card container
+  const projectCard = document.createElement("div");
+  projectCard.classList.add("project-card");
+
+  // Add project title dynamically based on heading level
+  const title = document.createElement(headingTag);
+  title.textContent = project.title || "Untitled Project";
+  
+  // Add project description
+  const description = document.createElement("p");
+  description.textContent = project.description || "No description available.";
+
+  // Add project image (if available)
+  if (project.image) {
+      const img = document.createElement("img");
+      img.src = project.image;
+      img.alt = project.title || "Project Image";
+      projectCard.appendChild(img);
+  }
+
+  // Add project link (if available)
+  if (project.link) {
+      const link = document.createElement("a");
+      link.href = project.link;
+      link.textContent = "View Project";
+      link.target = "_blank";
+      projectCard.appendChild(link);
+  }
+
+  // Append elements to the project card
+  projectCard.appendChild(title);
+  projectCard.appendChild(description);
+
+  // Append project card to the article
+  article.appendChild(projectCard);
+
+  // Append the article to the container
+  containerElement.appendChild(article);
+}
