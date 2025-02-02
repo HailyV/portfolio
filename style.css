@@ -121,3 +121,33 @@ html {
 .section h1,h3{
   text-align: center;
 }
+
+
+
+#profile-stats {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  gap: 20px; /* Adds spacing between columns */
+  justify-items: center; /* Centers content within each grid cell */
+}
+
+#profile-stats dt {
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #666;
+  grid-row: 1; /* Place all <dt> elements in the first row */
+}
+
+#profile-stats dd {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+  grid-row: 2; /* Place all <dd> elements in the second row */
+}

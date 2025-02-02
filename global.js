@@ -149,9 +149,6 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
       return;
   }
 
-  // Clear the container to avoid duplication
-  containerElement.innerHTML = '';
-
   // Validate heading level (must be h1-h6)
   const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
   const headingTag = validHeadings.includes(headingLevel) ? headingLevel : 'h2';
@@ -197,4 +194,21 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
   // Append the article to the container
   containerElement.appendChild(article);
+}
+
+/* Getter Function */
+export async function fetchGitHubData(username) {
+  try {
+      console.log(`Fetching GitHub data for ${username}...`); // Debug log
+      const data = await fetchJSON(`https://api.github.com/users/${username}`);
+
+      if (!data) {
+          throw new Error("Failed to retrieve GitHub data");
+      }
+
+      console.log("Fetched GitHub data:", data); // Debug log
+      return data;
+  } catch (error) {
+      console.error("Error fetching GitHub profile:", error);
+  }
 }
