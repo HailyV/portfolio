@@ -1,25 +1,33 @@
 import { fetchJSON, renderProjects } from '../global.js';
 
-// Select the container where projects will be displayed
-const projectsContainer = document.querySelector('.projects');
-
-// Ensure the container exists
-if (!projectsContainer) {
-    console.error("Error: '.projects' container not found in the DOM.");
-}
-
 // Function to fetch and render projects
 async function loadProjects() {
     try {
         console.log("Fetching projects from JSON...");
-        const projects = await fetchJSON('../lib/projects.json'); // Adjust path if needed
+
+        // Fetch all projects from JSON
+        const projects = await fetchJSON('../lib/projects.json'); // Ensure correct path
         console.log("Fetched projects:", projects);
 
+        // Validate the fetched data
         if (!projects || !Array.isArray(projects)) {
-            throw new Error("Invalid projects data: Expected an array.");
+            throw new Error("Invalid projects data: Expected a non-empty array.");
         }
 
-        // ✅ Clear the container before rendering
+        // Select the container for projects and the title element
+        const projectsContainer = document.querySelector('.projects');
+        const projectsTitle = document.querySelector('.projects-title');
+
+        if (!projectsContainer) {
+            throw new Error("Error: '.projects' container not found in the DOM.");
+        }
+
+        // ✅ Update the project count in the title
+        if (projectsTitle) {
+            projectsTitle.textContent = `Projects (${projects.length})`;
+        }
+
+        // ✅ Clear the container before rendering projects
         projectsContainer.innerHTML = '';
 
         // ✅ Render each project
@@ -27,6 +35,7 @@ async function loadProjects() {
             renderProjects(project, projectsContainer, 'h2');
         });
 
+        console.log("Projects loaded successfully.");
     } catch (error) {
         console.error("Error loading projects:", error);
     }
