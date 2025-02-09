@@ -163,10 +163,25 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   // Add project title dynamically based on heading level
   const title = document.createElement(headingTag);
   title.textContent = project.title || "Untitled Project";
-  
+
+  // Wrapper for description & year
+  const detailsWrapper = document.createElement("div");
+  detailsWrapper.classList.add("project-details");
+
   // Add project description
   const description = document.createElement("p");
   description.textContent = project.description || "No description available.";
+
+  // Add project year (if available)
+  if (project.year) {
+      const year = document.createElement("p");
+      year.classList.add("project-year");
+      year.textContent = `Year: ${project.year}`;
+      detailsWrapper.appendChild(year);
+  }
+
+  // Append description and year inside the wrapper
+  detailsWrapper.appendChild(description);
 
   // Add project image (if available)
   if (project.image) {
@@ -187,7 +202,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
   // Append elements to the project card
   projectCard.appendChild(title);
-  projectCard.appendChild(description);
+  projectCard.appendChild(detailsWrapper);
 
   // Append project card to the article
   article.appendChild(projectCard);
@@ -195,6 +210,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   // Append the article to the container
   containerElement.appendChild(article);
 }
+
 
 /* Getter Function */
 export async function fetchGitHubData(username) {

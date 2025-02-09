@@ -151,3 +151,101 @@ html {
   color: #333;
   grid-row: 2; /* Place all <dd> elements in the second row */
 }
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+/* Ensure everything is centered and remove unnecessary spacing */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content */
+  justify-content: center;
+  gap: 0.5em; /* Reduce spacing */
+  margin-top: 0; /* Remove extra margin */
+}
+
+.chart-container {
+  display: flex; /* Aligns pie chart and legend side by side */
+  align-items: center; /* Ensures vertical alignment */
+  gap: 20px; /* Space between pie chart & legend */
+  justify-content: center; /* Centers the entire block */
+  margin-top: 20px;
+  flex-wrap: wrap; /* Allows items to wrap if screen is too small */
+}
+
+/* Ensure SVG doesn't create extra spacing */
+svg {
+  display: block; /* Removes default inline spacing */
+  width: 300px; /* Set a reasonable width */
+  height: auto;
+  margin-bottom: 0; /* Remove extra margin */
+}
+
+/* Make the legend fully responsive */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Dynamically adjust */
+  gap: 10px 20px; /* Adjust spacing between items */
+  list-style: none;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  flex: 1; /* Allows legend to take up available space */
+  min-width: 200px; /* Ensures proper scaling */
+  max-width: 400px; /* Prevents it from becoming too wide */
+}
+
+/* Ensure swatch is square */
+.legend .swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color);
+  border-radius: 2px; /* Slight rounding, keeps it square */
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+/* Define highlight color (Mint Green Teal) */
+:root {
+  --color-accent: oklch(85% 0.2 180); /* Mint Green Teal */
+}
+
+/* Default transition & pointer */
+path {
+  transition: opacity 300ms, fill 300ms;
+  cursor: pointer;
+}
+
+/* Dim other wedges when one is hovered */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+/* Ensure the selected wedge gets mint green */
+path.selected {
+  fill: var(--color-accent) !important;
+}
+
+/* Highlight selected legend item */
+li.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Ensure the legend swatch also turns mint green */
+.selected .swatch {
+  background-color: var(--color-accent) !important;
+}
+
+
+
