@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { url: '/portfolio/projects/index.html', title: 'Projects' },
     { url: '/portfolio/cv/index.html', title: 'Resume' },
     { url: '/portfolio/contact/index.html', title: 'Contact' },
+    { url: '/portfolio/lib/meta/index.html', title: 'Meta' },
     { url: 'https://github.com/HailyV', title: 'Profile' },
   ];
 
