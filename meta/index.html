@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Statistics Visualization</title>
+    <!-- Import D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Code Statistics Visualization</h1>
+    <svg width="600" height="400"></svg>
+    <h2  style="text-align: center;">Commits by Time of Day</h2>
+    <p id="selection-count" style="text-align: center;">No commits selected</p>
+    <dl id="language-breakdown" class="stats"></dl>
+
+    <dl id="commit-tooltip" class="info tooltip">
+        <dt>Commit</dt>
+        <dd>
+          <a href="" id="commit-link" target="_blank"></a>
+        </dd>
+      
+        <dt>Date</dt>
+        <dd id="commit-date"></dd>
+      
+        <dt>Time</dt>
+        <dd id="commit-time"></dd>
+      
+        <dt>Author</dt>
+        <dd id="commit-author"></dd>
+      
+        <dt>Lines Edited</dt>
+        <dd id="commit-lines"></dd>
+      </dl>
+      
+    <div id="chart"></div>
+    <!-- Import our custom JavaScript -->
+    <script src="main.js"></script>
+    <section id="profile-stats">
+        <h2>Summary</h2>
+        <dl id="stats"></dl>
+    </section>
+    
+
+</body>
+</html>

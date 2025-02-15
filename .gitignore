@@ -1,1 +1,9 @@
+# Ignore generated CSV file
 meta/loc.csv
+
+# Ignore node_modules (all dependencies installed via npm)
+node_modules/
+
+# Ignore other potential files you don’t need in Git
+dist/
+.env

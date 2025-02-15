@@ -1,0 +1,52 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main  # Adjust as needed
+  pull_request:
+    branches:
+      - main  # Adjust as needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full Git history
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Adjust as needed
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Elocuent
+        run: |
+          npx elocuent -d . -o meta/loc.csv  # Generates CSV file
+
+      - name: Commit and Push CSV File
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          mkdir -p meta
+          git pull
+          git add -f meta/loc.csv
+          git commit -m "Update code statistics" || echo "No changes to commit"
+          git push
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy
+        run: ./deploy.sh  # Modify as needed

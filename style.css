@@ -248,4 +248,154 @@ li.selected {
 }
 
 
+/* Summary Section */
+#summary {
+  text-align: left;
+  font-family: Arial, sans-serif;
+  margin-bottom: 30px;
+}
+
+#summary h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Profile Stats Section */
+#profile-stats {
+  margin: 20px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#profile-stats h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Grid Layout for Stats */
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  gap: 20px; /* Ensures equal spacing between items */
+  justify-items: center; /* Centers content in each cell */
+  align-items: start; /* Ensures equal height */
+}
+
+/* Stat Titles (Now on Top) */
+#profile-stats dt {
+  font-weight: bold;
+  font-size: 0.85rem; /* Smaller than stats */
+  text-transform: uppercase;
+  color: #666;
+  text-align: center;
+  grid-row: 1; /* Moves titles to the first row */
+}
+
+/* Stat Values (Now Below the Titles) */
+#profile-stats dd {
+  font-size: 2rem; /* Larger for emphasis */
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  grid-row: 2; /* Moves values to the second row */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px; /* Ensures consistent height */
+}
+
+/* Fix for multi-line stats */
+.sub-value {
+  font-size: 1rem;
+  color: #666;
+  font-weight: normal;
+  margin-top: -5px;
+  line-height: 1.2; /* Ensures compact spacing */
+}
+/* Gridline Styling */
+.gridlines path {
+  stroke: none; /* Remove axis line */
+}
+
+.gridlines line {
+  stroke: #ddd; /* Light gray for subtlety */
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+/* Tooltip Styling */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5px 10px; /* Space between rows and columns */
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.85); /* Semi-transparent background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  max-width: 250px;
+  position: fixed; /* Float over the page */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+}
+
+/* Hide tooltip initially */
+dl.info[hidden] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Make labels (dt) less prominent */
+dl.info dt {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+
+/* Tooltip positioning */
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  display: none; /* Hidden by default */
+}
+
+/* Hover effect on circles */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+#chart {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
+  width: 100%;
+  max-width: 1100px; /* Prevents excessive stretching */
+  margin: auto; /* Centers within the page */
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+}
+
+
+
 
