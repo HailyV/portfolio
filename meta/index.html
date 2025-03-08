@@ -11,6 +11,13 @@
 </head>
 <body>
     <h1>Code Statistics Visualization</h1>
+    <div id="filter-container">
+      <label for="commit-slider">Show commits until:</label>
+      <input type="range" id="commit-slider" min="0" max="100">
+      <time id="commit-time"></time>
+  </div>
+  <dl class="files"></dl>
+
     <svg width="600" height="400"></svg>
     <h2  style="text-align: center;">Commits by Time of Day</h2>
     <p id="selection-count" style="text-align: center;">No commits selected</p>
@@ -35,7 +42,35 @@
         <dd id="commit-lines"></dd>
       </dl>
       
-    <div id="chart"></div>
+      <div id="scrollytelling-container">
+        <!-- Commit Scrollytelling (Left) -->
+        <div id="scrollytelling">
+            <div id="scroll-container">
+                <div id="spacer"></div>
+                <div id="items-container"></div>
+                <div id="time-container">
+                  <span id="selectedTime"></span>
+              </div>
+              
+
+            </div>
+        </div>
+    
+        <!-- Scatterplot (Center) -->
+        <div id="chart"></div>
+    
+        <!-- File Size Scrollytelling (Right) -->
+        <div id="scrollytelling-files">
+            <div id="scroll-container-files">
+                <div id="spacer-files"></div>
+                <div id="items-container-files"></div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  
+    
     <!-- Import our custom JavaScript -->
     <script src="main.js"></script>
     <section id="profile-stats">
